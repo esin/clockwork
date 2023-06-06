@@ -1,11 +1,14 @@
-window.setInterval(ut, 1000);
-
 function padWithLeadingZeros(num, totalLength) {
   return String(num).padStart(totalLength, '0');
 }
 
-function ut() {
-  document.getElementById("time").innerHTML = padWithLeadingZeros(Math.floor(Math.random() * 23), 2) + ':' 
-    + padWithLeadingZeros(Math.floor(Math.random() * 59), 2) + ':' + padWithLeadingZeros(Math.floor(Math.random() * 59), 2);
-
+function updateTime() {
+  var currentTime = new Date();
+  var hours = padWithLeadingZeros(currentTime.getHours(), 2);
+  var minutes = padWithLeadingZeros(currentTime.getMinutes(), 2);
+  var seconds = padWithLeadingZeros(currentTime.getSeconds(), 2);
+  
+  document.getElementById("time").innerHTML = hours + ':' + minutes + ':' + seconds;
 }
+
+window.setInterval(updateTime, 1000);
